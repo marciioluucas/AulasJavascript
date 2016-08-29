@@ -1,0 +1,137 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+h1,h2,h3,h4 {
+  font-family: sans-serif;
+  color: #3d3d3d;
+}
+
+header h1, h2 {
+  color: #fff;
+}
+
+header {
+  padding-top: 45px;
+  text-align: center;
+  background-color: #00b050;
+  padding-left: 0px !important;
+  height: 170px;
+  margin-bottom: 50px;
+}
+
+.form {
+  width:250px;
+  margin:0 auto;
+}
+
+.coluna {
+margin-top: 10px;
+}
+
+
+
+.grupo {
+  position:relative;
+  margin-bottom:45px;
+}
+input[type="text"] {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #00b050;
+}
+
+input[type="button"] {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  background-color: #00b050;
+  border-bottom:1px solid #00b050;
+  color: #fff;
+}
+input:focus { outline:none; }
+
+label {
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#00b050;
+}
+
+.barra 	{ position:relative; display:block; width:300px; }
+.barra:before, .barra:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#00b050;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.barra:before {
+  left:50%;
+}
+.barra:after {
+  right:50%;
+}
+
+input:focus ~ .barra:before, input:focus ~ .barra:after {
+  width:50%;
+}
+
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+
+@-webkit-keyframes inputHighlighter {
+	from { background:#00b050; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#00b050; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#00b050; }
+  to 	{ width:0; background:transparent; }
+}
+
+footer {
+  width: 100%;
+  font-size: 10px;
+  margin: 0 auto;
+}
