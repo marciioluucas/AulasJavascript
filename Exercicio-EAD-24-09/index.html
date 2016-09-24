@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de intercâmbio do bananal</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <style>
+        .erro {
+            background-color: #ba4a41;
+        }
+    </style>
+</head>
+<body >
+<section style="width: 100%; height: 280px; background-color: #46af55; margin-bottom: 20px;
+ color: #fff; padding-top: 60px">
+    <h1 class="container">Formulário de inscrição</h1>
+    <h2 class="container">para o intercâmbio do colégio Bananal</h2>
+</section>
+<section class="container">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Formulário de Intercâmbio</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <div class="col-md-4">
+                    <input id="nome" name="campo" type="text" placeholder="Nome" class="form-control input-md"
+                    >
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="idade">Idade</label>
+                <div class="col-md-4">
+                    <input id="idade" name="campo" type="text" placeholder="Idade" class="form-control input-md"
+                    >
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">E-mail</label>
+                <div class="col-md-4">
+                    <input id="email" name="campo" type="text" placeholder="Email" class="form-control input-md"
+                           onblur="validaEmail()">
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="telefone">Telefone</label>
+                <div class="col-md-4">
+                    <input id="telefone" name="campo" type="text" placeholder="Telefone"
+                           class="form-control input-md" onblur="validaTelefone()">
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Multiple Radios -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Sexo</label>
+                <div class="col-md-4">
+                    <div class="radio">
+                        <label for="sexo-0">
+                            <input type="radio" name="campo" id="sexo-0" value="masc" checked="checked">
+                            Masculino
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="sexo-1">
+                            <input type="radio" name="campo" id="sexo-1" value="fem">
+                            Feminino
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="sexo-2">
+                            <input type="radio" name="campo" id="sexo-2" value="out">
+                            Outros
+                        </label>
+                    </div>
+                </div>
+                <span class="help-block" style="display: none;">Erro</span>
+            </div>
+
+            <!-- Multiple Checkboxes -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Linguas faladas</label>
+                <div class="col-md-4">
+                    <div class="checkbox">
+                        <label for="linguas-0">
+                            <input type="checkbox" name="campo" id="linguas-0" value="1">
+                            Português
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="linguas-1">
+                            <input type="checkbox" name="campo" id="linguas-1" value="2">
+                            Inglês
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="linguas-2">
+                            <input type="checkbox" name="campo" id="linguas-2" value="3">
+                            Alemão
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="linguas-3">
+                            <input type="checkbox" name="campo" id="linguas-3" value="4">
+                            Francês
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="linguas-4">
+                            <input type="checkbox" name="campo" id="linguas-4" value="5">
+                            Espanhol
+                        </label>
+                    </div>
+                </div>
+                <span class="help-block" style="display: none;">Erro</span>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="estado">Estado</label>
+                <div class="col-md-4">
+                    <input id="estado" name="campo" type="text" placeholder="Estado" class="form-control input-md"
+                            list="estados" onblur="ajaxGet()">
+                    <datalist id="estados">
+                    </datalist>
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Search input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Cidade">Cidade</label>
+                <div class="col-md-4">
+                    <input id="Cidade" name="campo" type="text" placeholder="Cidade" class="form-control input-md"
+                    list="cidades">
+                    <datalist id="cidades">
+                    </datalist>
+                    <span class="help-block" style="display: none;">Erro</span>
+                </div>
+            </div>
+
+            <!-- Button -->
+
+
+        </fieldset>
+    </form>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="enviar"></label>
+        <div class="col-md-4">
+            <button id="enviar" name="enviar" class="btn btn-success" onclick="validar()">Enviar</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>
