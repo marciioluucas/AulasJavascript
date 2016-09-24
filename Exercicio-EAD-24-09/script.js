@@ -62,7 +62,8 @@ function validaTelefone() {
         alert(RegExp.input + "Telefone inválido");
     }
 }
-
+var estadoSelecionado;
+var posEstado;
 function ajaxGet() {
 
     var xhttp = new XMLHttpRequest();
@@ -77,14 +78,20 @@ function ajaxGet() {
 
             for (var i = 0; i < totalItems; i++) {
 
-                html += "<option value='" + obj.estados[i].nome + "'/>\n";
-                for (var j = 0; j < obj.estados[i].cidades.length; j++) {
-                    html2 += "<option value='" + obj.estados[i].cidades[j] + "'/>\n";
-                }
-            }
+                html += "<option value='" + obj.estados[i].nome + "' />\n";
 
+                estadoSelecionado = obj.estados[i].cidades;
+                // for (var j = 0; j < obj.estados[i].cidades.length; j++) {
+                //     html2 += "<option value='" + obj.estados[i].cidades[j] + "'/>\n";
+                // }
+
+            }
+                // alert(estadoSelecionado.nome);
             document.getElementById("estados").innerHTML = html;
-            document.getElementById("cidades").innerHTML = html2;
+            // for (var j = 0; j < estadoSelecionado.cidades.length; j++) {
+            //     html2 += "<option value='" + obj.estados[i].cidades[j] + "'/>\n";
+            // }
+            // document.getElementById("cidades").innerHTML = html2;
 
 
         }
@@ -95,5 +102,18 @@ function ajaxGet() {
     };
     xhttp.open("GET", "https://gist.githubusercontent.com/letanure/3012978/raw/36fc21d9e2fc45c078e0e0e07cce3c81965db8f9/estados-cidades.json", true);
     xhttp.send();
+}
+function pegaEstado(obj) {
+    estadoSelecionado = obj
+}
+
+function listaCidadesEstadoSelecionado() {
+    var html2;
+    alert(estadoSelecionado.estados[0].nome);
+    // for (var j = 0; j < estadoSelecionado.length; j++) {
+    //     html2 += "<option value='" + estadoSelecionado[j] + "'/>\n";
+    // }
+    document.getElementById("cidades").innerHTML = html2;
+
 }
 
