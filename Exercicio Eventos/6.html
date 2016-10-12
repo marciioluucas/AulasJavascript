@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      // Code goes here
+      var obj = document.getElementById('p');
+      if(document.attachEvent) {
+        document.attachEvent('onload', functionCall);
+      }else if(document.addEventListener) {
+        document.addEventListener('load', functionCall, true);
+      }
+      function functionCall(eventin_do_baralho) {
+       
+       var eventin_maroto = eventin_do_baralho ? eventin_do_baralho : window.event;
+       var alertzim =  'Ola Mundo ';
+       
+       if(eventin_maroto.stopPropagation){
+         eventin_maroto.stopPropagation();
+         alert('outros nav');
+       }else {
+         eventin_maroto.cancelBubble = true;
+         alert('internet exp');
+       }
+       
+       return alert(alertzim);
+        
+      }
+    </script>
+  </head>
+
+  <body>
+    Voce nao deveria estar aqui
+  </body>
+
+</html>

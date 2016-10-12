@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      // Code goes here
+      var obj = document.getElementById('p');
+      if(document.attachEvent) {
+        document.attachEvent('onclick', alerta);
+      }else if(document.addEventListener) {
+        document.addEventListener('click',alerta,true);
+      }
+      function alerta(eventin_do_baralho) {
+       
+       var eventin_maroto = eventin_do_baralho ? eventin_do_baralho : window.event;
+       
+       var alerta =  'Ola Mundo ';
+       
+       if(eventin_maroto.stopPropagation){
+         eventin_maroto.stopPropagation();
+         alert('outros nav');
+       }else {
+         eventin_maroto.cancelBubble = true;
+         alert('internet exp');
+       }
+       
+       return alert(alerta += eventin_maroto.screenX);
+        
+      }
+    </script>
+  </head>
+
+  <body>
+    <p id="p">nao click aqui</p>
+  </body>
+
+</html>
