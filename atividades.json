@@ -1,0 +1,19 @@
+{
+  "atividades" : [
+    {
+      "link": "exercicio-1/index.html",
+      "label": "Exercício 1",
+      "descricao": "Calculo da gasolina e do alcool para ver qual é mais viável."
+    },
+    {
+      "link": "exercicio-2/index.html",
+      "label": "Exercício 2",
+      "descricao": "Exercicios da lista de exercicio sobre as parada de chamar os metodo no html e somente no script"
+    },
+    {
+      "link": "exercicio-3/index.html",
+      "label": "Exercicio 3",
+      "descricao": "Exercicio de validação de formulários com RegEx o/."
+    }
+  ]
+}
