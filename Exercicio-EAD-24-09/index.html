@@ -20,6 +20,10 @@
         .erro {
             border: solid 1px #ba4a41;
         }
+
+        .escondeCidades {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +33,7 @@
     <h2 class="container">para o intercâmbio do colégio Bananal</h2>
 </section>
 <section class="container">
-    <form class="form-horizontal">
+    <form class="form-horizontal" onsubmit="return validarForms()">
         <fieldset>
 
             <!-- Form Name -->
@@ -40,7 +44,7 @@
                 <label class="col-md-4 control-label" for="nome">Nome</label>
                 <div class="col-md-4">
                     <input id="nome" name="campo" type="text" placeholder="Nome" class="form-control input-md"
-                           onblur="verifica(validaNome('nome', /^[A-z]{10,30}$/), 'nome')">
+                           onblur="verifica(validaNome(), 'nome')">
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
@@ -50,6 +54,7 @@
                 <label class="col-md-4 control-label" for="idade">Idade</label>
                 <div class="col-md-4">
                     <input id="idade" name="campo" type="text" placeholder="Idade" class="form-control input-md"
+                           onblur="verifica(validaIdade(), 'idade')"
                     >
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
@@ -60,7 +65,7 @@
                 <label class="col-md-4 control-label" for="email">E-mail</label>
                 <div class="col-md-4">
                     <input id="email" name="campo" type="text" placeholder="Email" class="form-control input-md"
-                           onblur="validaEmail()">
+                           onblur="verifica(validaEmail(), 'email')">
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
@@ -70,7 +75,7 @@
                 <label class="col-md-4 control-label" for="telefone">Telefone</label>
                 <div class="col-md-4">
                     <input id="telefone" name="campo" type="text" placeholder="Telefone"
-                           class="form-control input-md" onblur="validaTelefone()">
+                           class="form-control input-md" onblur="verifica(validaTelefone(), 'telefone')">
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
@@ -81,19 +86,19 @@
                 <div class="col-md-4">
                     <div class="radio">
                         <label for="sexo-0">
-                            <input type="radio" name="campo" id="sexo-0" value="masc" checked="checked">
+                            <input type="radio" name="sexo" id="sexo-0" value="masc" checked="checked">
                             Masculino
                         </label>
                     </div>
                     <div class="radio">
                         <label for="sexo-1">
-                            <input type="radio" name="campo" id="sexo-1" value="fem">
+                            <input type="radio" name="sexo" id="sexo-1" value="fem">
                             Feminino
                         </label>
                     </div>
                     <div class="radio">
                         <label for="sexo-2">
-                            <input type="radio" name="campo" id="sexo-2" value="out">
+                            <input type="radio" name="sexo" id="sexo-2" value="out">
                             Outros
                         </label>
                     </div>
@@ -104,34 +109,34 @@
             <!-- Multiple Checkboxes -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Linguas faladas</label>
-                <div class="col-md-4">
+                <div class="col-md-4" id="divzinhaLinguas">
                     <div class="checkbox">
                         <label for="linguas-0">
-                            <input type="checkbox" name="campo" id="linguas-0" value="1">
+                            <input type="checkbox" name="linguas" id="linguas-0" value="1">
                             Português
                         </label>
                     </div>
                     <div class="checkbox">
                         <label for="linguas-1">
-                            <input type="checkbox" name="campo" id="linguas-1" value="2">
+                            <input type="checkbox" name="linguas" id="linguas-1" value="2">
                             Inglês
                         </label>
                     </div>
                     <div class="checkbox">
                         <label for="linguas-2">
-                            <input type="checkbox" name="campo" id="linguas-2" value="3">
+                            <input type="checkbox" name="linguas" id="linguas-2" value="3">
                             Alemão
                         </label>
                     </div>
                     <div class="checkbox">
                         <label for="linguas-3">
-                            <input type="checkbox" name="campo" id="linguas-3" value="4">
+                            <input type="checkbox" name="linguas" id="linguas-3" value="4">
                             Francês
                         </label>
                     </div>
                     <div class="checkbox">
                         <label for="linguas-4">
-                            <input type="checkbox" name="campo" id="linguas-4" value="5">
+                            <input type="checkbox" name="linguas" id="linguas-4" value="5">
                             Espanhol
                         </label>
                     </div>
@@ -141,24 +146,21 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="estado">Estado</label>
+                <label class="col-md-4 control-label" for="estados">Estado</label>
                 <div class="col-md-4">
-                    <input id="estado" name="campo" type="text" placeholder="Estado" class="form-control input-md"
-                           list="estados" onkeyup="ajaxGet()" onblur="listaCidadesEstadoSelecionado()">
-                    <datalist id="estados">
-                    </datalist>
+                    <select id="estados" name="campo" class="form-control input-md"
+                            onchange="listaCidadesEstadoSelecionado(this);"></select>
+
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
 
             <!-- Search input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="Cidade">Cidade</label>
+            <div class="form-group escondeCidades">
+                <label class="col-md-4 control-label" for="cidades">Cidade</label>
                 <div class="col-md-4">
-                    <input id="Cidade" name="campo" type="text" placeholder="Cidade" class="form-control input-md"
-                           list="cidades">
-                    <datalist id="cidades">
-                    </datalist>
+                    <select id="cidades" name="campo" class="form-control input-md"></select>
+
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
@@ -166,14 +168,14 @@
             <!-- Button -->
 
 
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="enviar"></label>
+                <div class="col-md-4">
+                    <input id="enviar" name="enviar" class="btn btn-success" value="Enviar" type="submit"/>
+                </div>
+            </div>
         </fieldset>
     </form>
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="enviar"></label>
-        <div class="col-md-4">
-            <button id="enviar" name="enviar" class="btn btn-success" onclick="validar()">Enviar</button>
-        </div>
-    </div>
 </section>
 </body>
 </html>
