@@ -145,7 +145,7 @@ function listaCidadesEstadoSelecionado(valor) {
     }
 
     document.getElementById("cidades").innerHTML = html2;
-    document.getElementById("cidades").classList.remove("escondeCidades");
+    document.getElementById("divCidades").classList.remove("escondeCidades");
 }
 
 document.load = ajaxGet();
