@@ -11,18 +11,24 @@ function ajaxGet() {
             var json = this.responseText;
             var obj = JSON.parse(json);
             var totalItems = obj.atividades.length;
-            var html = "";
+            var html = '<table class="table">' +
+                '<tr>' +
+                '<th>Nome do exercício</th>' +
+                '<th>Descrição</th>' +
+                '<th>Ir</th>' +
+                '</tr>';
 
 
             for (var i = 0; i < totalItems; i++) {
 
-                html += '<button data-toggle="collapse" data-target="#demo'+i+'" class="btn btn-default">' + obj.atividades[i].label + '</button>\n' +
-                    '<div id="#demo'+i+'" class="collapse">\n' +
-                    '<p>Descricao: ' + obj.atividades[i].descricao + '</p>\n' +
-                    '<p>Link: ' + obj.atividades[i].link + '</p>\n';
+                html += '<tr><td>' + obj.atividades[i].label + '</td>' +
+                    '<td>' + obj.atividades[i].descricao+ '</td>' +
+                    '<td> <a href="'+ obj.atividades[i].link+ '" class="btn btn-success">Ir</a></td></tr>';
+
 
 
             }
+            html += '</table>';
             // alert(estadoSelecionado.nome);
             document.getElementById("conteudo").innerHTML = html;
 
