@@ -18,11 +18,11 @@
     <script src="script.js"></script>
     <style>
         .erro {
-            background-color: #ba4a41;
+            border: solid 1px #ba4a41;
         }
     </style>
 </head>
-<body >
+<body>
 <section style="width: 100%; height: 280px; background-color: #46af55; margin-bottom: 20px;
  color: #fff; padding-top: 60px">
     <h1 class="container">Formulário de inscrição</h1>
@@ -40,7 +40,7 @@
                 <label class="col-md-4 control-label" for="nome">Nome</label>
                 <div class="col-md-4">
                     <input id="nome" name="campo" type="text" placeholder="Nome" class="form-control input-md"
-                    >
+                           onblur="verifica(validaNome('nome', /^[A-z]{10,30}$/), 'nome')">
                     <span class="help-block" style="display: none;">Erro</span>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                 <label class="col-md-4 control-label" for="estado">Estado</label>
                 <div class="col-md-4">
                     <input id="estado" name="campo" type="text" placeholder="Estado" class="form-control input-md"
-                            list="estados" onkeyup="ajaxGet()" onblur="listaCidadesEstadoSelecionado()">
+                           list="estados" onkeyup="ajaxGet()" onblur="listaCidadesEstadoSelecionado()">
                     <datalist id="estados">
                     </datalist>
                     <span class="help-block" style="display: none;">Erro</span>
@@ -156,7 +156,7 @@
                 <label class="col-md-4 control-label" for="Cidade">Cidade</label>
                 <div class="col-md-4">
                     <input id="Cidade" name="campo" type="text" placeholder="Cidade" class="form-control input-md"
-                    list="cidades">
+                           list="cidades">
                     <datalist id="cidades">
                     </datalist>
                     <span class="help-block" style="display: none;">Erro</span>
